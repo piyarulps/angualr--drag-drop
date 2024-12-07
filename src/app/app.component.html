@@ -1,28 +1,6 @@
 <div class="timetable-container">
-  <!-- Header: Days of the Week -->
-  <div class="timetable-header">
-    <div class="empty-column"></div>
-    <div *ngFor="let day of days" class="day-column">
-      {{ day }}
-    </div>
-  </div>
-
-  <!-- Time Slots -->
-  <div *ngFor="let slotIndex of [0, 1, 2, 3, 4, 5, 6]" class="time-slot-row">
-    <div class="time-slot">Slot {{ slotIndex + 1 }}</div>
-    <div
-      *ngFor="let day of days"
-      class="slot"
-      pDroppable
-      [ngClass]="{'slot-over': draggedTeacher && !timetable[day][slotIndex]}"
-      (onDrop)="onDrop($event, day, slotIndex)"
-    >
-      <div class="slot-content">{{ timetable[day][slotIndex] || '' }}</div>
-    </div>
-  </div>
-
-  <!-- Teacher Pool (Draggable Teachers) -->
-  <div class="teacher-pool">
+  <!-- Teacher List (Left Side) -->
+  <div class="teacher-list">
     <div
       *ngFor="let teacher of teachers"
       class="teacher"
@@ -31,6 +9,31 @@
       (onDragEnd)="onDragEnd()"
     >
       {{ teacher }}
+    </div>
+  </div>
+
+  <!-- Timetable (Right Side) -->
+  <div class="timetable">
+    <!-- Header with Days -->
+    <div class="timetable-header">
+      <div class="empty-column"></div>
+      <div *ngFor="let day of days" class="day-column">
+        {{ day }}
+      </div>
+    </div>
+
+    <!-- Time Slots -->
+    <div *ngFor="let timeSlot of timeSlots" class="time-slot-row">
+      <div class="time-slot">{{ timeSlot }}</div>
+      <div
+        *ngFor="let day of days; let dayIndex = index"
+        class="slot"
+        pDroppable
+        [ngClass]="{'slot-over': draggedTeacher && !timetable[day][timeSlot]}"
+        (onDrop)="onDrop($event, day, timeSlot)"
+      >
+        <div class="slot-content">{{ timetable[day][timeSlot] || '' }}</div>
+      </div>
     </div>
   </div>
 </div>
