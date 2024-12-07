@@ -1,13 +1,42 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { DragDropModule } from 'primeng/dragdrop';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [DragDropModule, CommonModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular-drap-drop';
+  title = 'angular-drag-drop-timetable';
+  days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+  teachers = ['John Doe', 'Jane Smith', 'Michael Brown', 'Emily Davis', 'Chris Johnson','Josh smith'];
+
+  // Initialize timetable with null values
+  timetable: { [key: string]: (string | null)[] } = {
+    Monday: Array(7).fill(null),
+    Tuesday: Array(7).fill(null),
+    Wednesday: Array(7).fill(null),
+    Thursday: Array(7).fill(null),
+    Friday: Array(7).fill(null),
+  };
+
+  draggedTeacher: string | null = null;
+
+  onDragStart(teacher: string) {
+    this.draggedTeacher = teacher;
+  }
+
+  onDragEnd() {
+    this.draggedTeacher = null;
+  }
+
+  onDrop(event: any, day: string, slotIndex: number) {
+    if (this.draggedTeacher && !this.timetable[day][slotIndex]) {
+      this.timetable[day][slotIndex] = this.draggedTeacher;
+      this.draggedTeacher = null;
+    }
+  }
 }

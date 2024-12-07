@@ -1,0 +1,94 @@
+/* Container for the entire timetable */
+.timetable-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    border-radius: 8px;
+    background-color: #f5f5f5;
+  }
+  
+  /* Header row with the days of the week */
+  .timetable-header {
+    display: grid;
+    grid-template-columns: 1fr repeat(5, 1fr);
+    border-bottom: 2px solid #ccc;
+    padding: 10px 0;
+    background-color: #e0e0e0;
+    font-weight: bold;
+  }
+  
+  .empty-column {
+    width: 100%;
+  }
+  
+  .day-column {
+    text-align: center;
+    padding: 5px;
+    font-size: 14px;
+    color: #333;
+  }
+  
+  /* Row for each time slot */
+  .time-slot-row {
+    display: grid;
+    grid-template-columns: 1fr repeat(5, 1fr);
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+  }
+  
+  .time-slot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8f8f8;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
+  .slot {
+    position: relative;
+    height: 70px;
+    border: 1px solid #ccc;
+    background-color: white;
+    transition: background-color 0.3s ease;
+  }
+  
+  .slot-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-size: 14px;
+    color: #333;
+  }
+  
+  /* Styling for the draggable teacher pool */
+  .teacher-pool {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .teacher {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: move;
+    font-size: 14px;
+    text-align: center;
+    width: 150px;
+  }
+  
+  .teacher:hover {
+    background-color: #45a049;
+  }
+  
+  .slot-over {
+    background-color: #f0f0f0;
+    border-color: #9e9e9e;
+  }
+  
