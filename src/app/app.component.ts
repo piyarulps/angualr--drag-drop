@@ -13,6 +13,7 @@ export class AppComponent {
   title = 'angular-drag-drop-timetable';
   days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
   teachers = ['John Doe', 'Jane Smith', 'Michael Brown', 'Emily Davis', 'Chris Johnson','Josh smith'];
+  timeSlots = ['9:00 AM', '10:00 AM', '11:00 AM', '12:00 PM', '1:00 PM'];
 
   // Initialize timetable with null values
   timetable: { [key: string]: (string | null)[] } = {
@@ -38,5 +39,7 @@ export class AppComponent {
       this.timetable[day][slotIndex] = this.draggedTeacher;
       this.draggedTeacher = null;
     }
+    console.log(this.timetable);
+    
   }
 }
