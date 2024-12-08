@@ -1,5 +1,4 @@
 <div class="timetable-container">
-  <!-- Teacher List (Left Side) -->
   <div class="teacher-list">
     <div
       *ngFor="let teacher of teachers"
@@ -12,9 +11,7 @@
     </div>
   </div>
 
-  <!-- Timetable (Right Side) -->
   <div class="timetable">
-    <!-- Header with Days -->
     <div class="timetable-header">
       <div class="empty-column"></div>
       <div *ngFor="let day of days" class="day-column">
@@ -22,7 +19,6 @@
       </div>
     </div>
 
-    <!-- Time Slots -->
     <div *ngFor="let timeSlot of timeSlots" class="time-slot-row">
       <div class="time-slot">{{ timeSlot }}</div>
       <div
