@@ -1,5 +1,4 @@
 <div class="timetable-container">
-  <!-- Days of the Week (Blank Column + Monday to Friday) -->
   <div class="timetable-header">
     <div class="empty-column"></div>
     <div *ngFor="let day of days" class="day-column">
@@ -7,7 +6,6 @@
     </div>
   </div>
 
-  <!-- Teacher Names for each Day -->
   <div class="teacher-name-row" *ngFor="let teacher of teachers; let i = index">
     <div 
       class="time-slot"
